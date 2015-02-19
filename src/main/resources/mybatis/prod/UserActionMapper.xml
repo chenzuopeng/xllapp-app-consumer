@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.xllapp.consumer.useraction.dao.UserActionLogDao">
+	
+	<insert id="batchInsert" >        
+        <![CDATA[
+        insert into  USER_ACTION_LOG (
+        	PRODUCT_ID ,
+        	CLIENT_TYPE ,
+        	CLIENT_VERSION ,
+        	CLIENT_CHANNEL_TYPE ,
+        	OS_TYPE ,
+        	IMEI ,
+        	IMSI ,
+        	MOBILE ,
+        	ORG_CODE ,
+        	CITY_CODE ,
+        	LONGITUDE ,
+        	LATITUDE ,
+        	IP ,
+        	ACTION_TYPE ,
+        	AREA_ID ,
+        	ITEM_TYPE ,
+        	ITEM_ID ,
+        	SUB_ITEM_ID ,
+        	DESCRIPTION ,
+        	ACTION_TIME ,
+        	FIELD1 ,
+        	FIELD2 ,
+        	CREATE_TIME 
+        ) values 
+        ]]>  
+        <foreach collection="list" item="item" index="index" separator=",">
+        <![CDATA[
+        (
+        	#{item.productId},
+        	#{item.clientType},
+        	#{item.clientVersion},
+        	#{item.clientChannelType},
+        	#{item.osType},
+        	#{item.imei},
+        	#{item.imsi},
+        	#{item.mobile},
+        	#{item.orgCode},
+        	#{item.cityCode},
+        	#{item.longitude},
+        	#{item.latitude},
+        	#{item.ip},
+        	#{item.actionType},
+        	#{item.areaId},
+        	#{item.itemType},
+        	#{item.itemId},
+        	#{item.subItemId},
+        	#{item.desc},
+        	#{item.actionTime},
+        	#{item.field1},
+        	#{item.field2},
+        	now()
+        )
+       ]]>  
+       </foreach>
+	</insert>
+	
+</mapper> 
